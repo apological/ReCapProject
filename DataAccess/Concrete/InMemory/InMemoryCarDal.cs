@@ -50,9 +50,19 @@ namespace DataAccess.Concrete.InMemory
             return _cars;
         }
 
-        public List<Car> GetById(Car car)
+        public List<Car> GetAllByBrand(int brandId)
         {
-            return _cars.Where(c => c.Id == car.Id).ToList();
+            return _cars.Where(c => c.BrandId == brandId).ToList();
+        }
+
+        public List<Car> GetAllByColor(int colorId)
+        {
+            return _cars.Where(c => c.ColorId == colorId).ToList();
+        }
+
+        public List<Car> GetById()
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Car car)
