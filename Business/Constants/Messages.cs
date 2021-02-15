@@ -15,10 +15,11 @@ namespace Business.Constants
         public static string ColorsListed = "Renkler listelendi";
         public static string MaintenanceTime = "Sistem bakımda";
 
-        public static string RentalListed = "Kiralamalar listelendi";
-        public static string RentalAdded = "Kiralama eklendi.";
-        public static string RentalUpdated = "Kiralama güncellendi.";
-        public static string RentalDeleted = "Kiralama silindi.";
+        public static string RentalsListed = "Kiralama bilgileri listelendi";
+        public static string RentalAdded = "Kiralama bilgisi eklendi.";
+        public static string RentalUpdated = "Kiralama bilgileri güncellendi.";
+        public static string RentalDeleted = "Kiralama bilgileri silindi.";
+        public static string RentalInvalid = "İstediğiniz araba mevcut değil";
 
         public static string CustomerListed = "Müşteriler Listelendi";
         public static string CustomerAdded = "Müşteri eklendi.";

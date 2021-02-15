@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -9,29 +11,40 @@ namespace Business.Concrete
 {
     public class CustomerManager : ICustomerService
     {
-        public IResult Add(User user)
+        ICustomerDal _customerDal;
+
+        public CustomerManager(ICustomerDal customerDal)
         {
-            throw new NotImplementedException();
+            _customerDal = customerDal;
         }
 
-        public IResult Delete(User user)
+        public IResult Add(Customer customer)
         {
-            throw new NotImplementedException();
+            _customerDal.Add(customer);
+            return new SuccessResult(Messages.CustomerAdded);
+        }
+
+        public IResult Delete(Customer customer)
+        {
+            _customerDal.Delete(customer);
+            return new SuccessResult(Messages.CustomerDeleted);
+        }
+        public IResult Update(Customer customer)
+        {
+            _customerDal.Update(customer);
+            return new SuccessResult(Messages.CustomerUpdated);
         }
 
         public IDataResult<List<Customer>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(),Messages.CustomerListed);
         }
 
         public IDataResult<Customer> GetById(int customerId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Customer>(_customerDal.Get(cu=>cu.UserId==customerId));
         }
 
-        public IResult Update(User user)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

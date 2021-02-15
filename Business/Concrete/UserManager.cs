@@ -30,13 +30,14 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserDeleted);
         }
 
+        public IResult Update(User user)
+        {
+            _userDal.Update(user);
+            return new SuccessResult(Messages.UserUpdated);
+        }
+
         public IDataResult<List<User>> GetAll()
         {
-            if (DateTime.Now.Hour==23)
-            {
-                return new ErrorDataResult<List<User>>(Messages.MaintenanceTime);
-            }
-
             return new SuccessDataResult<List<User>>(_userDal.GetAll(), Messages.UserListed);
         }
 
@@ -45,10 +46,6 @@ namespace Business.Concrete
             return new SuccessDataResult<User>(_userDal.Get(c => c.Id == userId));
         }
 
-        public IResult Update(User user)
-        {
-            _userDal.Update(user);
-            return new SuccessResult(Messages.UserUpdated);
-        }
+        
     }
 }
